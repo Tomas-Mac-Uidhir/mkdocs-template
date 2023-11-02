@@ -1,5 +1,6 @@
 site_name: LEAP Ireland
 theme:
+  logo: assets/images/leap_ireland.png
   name: material
   features:
     - navigation.tabs
