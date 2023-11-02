@@ -1,4 +1,4 @@
-# LEAP-Ireland-Model
+# LEAP Ireland model
 LEAP Ireland model - for modelling up to 2030, includes multi-scenario, multi-sector information on Ireland's Emissions Inventory, energy demands, electricity generation and supply information and technologies up to 2030. A suite of UCC sectoral ceiling scenarios are also included with this version of the LEAP-Ireland model. License included in repository.
 
 <h2> Background </h2>
