@@ -35,5 +35,19 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/MossyMacUidhir
 
+nav:
+  - About: index.md
+  - Documentation: documentation.md
+  - Scenarios: 
+        - Introduction: scenarios.md
+        - Reference: scenarios\scenarios_desc_ref.md
+        - Sectoral Emissions Ceiling: scenarios\scenarios_desc_sec.md
+  - Results:
+        - Introduction: results.md
+        - Reference: results\results_ref.md
+        - Sectoral Emissions Ceiling: results\results_sec.md
+  
+
+
 copyright:
   "&copy UCC EPMG"
