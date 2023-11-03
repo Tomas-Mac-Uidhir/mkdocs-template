@@ -40,12 +40,12 @@ nav:
   - Documentation: documentation.md
   - Scenarios: 
         - Introduction: scenarios.md
-        - Reference: scenarios\scenarios_desc_ref.md
-        - Sectoral Emissions Ceiling: scenarios\scenarios_desc_sec.md
+        - Reference: .\scenarios\scenarios_desc_ref.md
+        - Sectoral Emissions Ceiling: .\scenarios\scenarios_desc_sec.md
   - Results:
         - Introduction: results.md
-        - Reference: results\results_ref.md
-        - Sectoral Emissions Ceiling: results\results_sec.md
+        - Reference: .\results\results_ref.md
+        - Sectoral Emissions Ceiling: .\results\results_sec.md
   
 
 
