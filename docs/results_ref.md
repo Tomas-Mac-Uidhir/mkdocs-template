@@ -5,18 +5,48 @@
 <head>
 	<script src="https://d3js.org/d3.v4.js"></script>
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<style>
+		#chart-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			grid-gap: 10px;
+		}
+		.chart-wrapper {
+			border: 1px solid #ccc;
+			margin: 10px;
+		}
+		.chart {
+			width: 100%;
+			height: auto;
+		}
+		@media (max-width: 600px) {
+			#chart-container {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
 </head>
 
 
 <md-main>
-<div id="my_dataviz"></div>  
+<div id="chart-container">
+	<div class="chart-wrapper" id="chart1"></div>
+	<div class="chart-wrapper" id="chart2"></div>
+	<div class="chart-wrapper" id="chart3"></div>
+	<div class="chart-wrapper" id="chart4"></div>
+	<div class="chart-wrapper" id="chart5"></div>
+	<div class="chart-wrapper" id="chart6"></div>
+</div>
+
 <script>
-   // set the dimensions and margins of the graph
+	// Your D3 code to create a chart, wrapped in a function
+	function createChart(chartId) {
+		  // set the dimensions and margins of the graph
 var margin = {top: 60, right: 230, bottom: 50, left: 50},
     width = 660 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("#" + chartId)
   .append("svg")
     // Set the view box with the width and height to make it responsive
     .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
@@ -171,7 +201,20 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
         .on("mouseover", highlight)
         .on("mouseleave", noHighlight)
 })
+		// Make sure to replace "#my_dataviz" with "#" + chartId
+		// Also, set the viewBox instead of width and height for responsiveness
+	}
+
+	// Call createChart for each chart you want to create
+	createChart('chart1');
+	createChart('chart2');
+	createChart('chart3');
+	createChart('chart4');
+	createChart('chart5');
+	createChart('chart6');
 </script>
+
+
 </md-main>
 </html>
 
