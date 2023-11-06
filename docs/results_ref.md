@@ -3,52 +3,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stacked Area Chart</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
-<body>
-<canvas id="myChart"></canvas>
+<md-main>
 <script>
-    // Define the data in JSON format
-    var jsonData = {
-        "labels": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"],
-        "datasets": [
-            {
-                "label": "Category A",
-                "data": [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120],
-                "backgroundColor": "rgba(255, 99, 132, 0.5)",
-                "stack": "Stack 0"
-            },
-            {
-                "label": "Category B",
-                "data": [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130],
-                "backgroundColor": "rgba(75, 192, 192, 0.5)",
-                "stack": "Stack 1"
-            },
-            {
-                "label": "Category C",
-                "data": [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150],
-                "backgroundColor": "rgba(153, 102, 255, 0.5)",
-                "stack": "Stack 0"
-            }
-        ]
-    };
-
-    // Create the chart using the JSON data
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: jsonData,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    var dataArray = [20, 40, 45];
+		var canvas1 = d3.select("md-main")
+						.append("svg")
+						.attr("width", 500)
+						.attr("height", 500)
+            .attr("border","black")	
+  	var canvas2 = d3.select("md-main")
+            .append("svg")
+						.attr("width", 500)
+						.attr("height", 500)
+            .attr("x", 550)
+    var canvas3 = d3.select("md-main")
+            .append("svg")
+						.attr("width", 500)
+						.attr("height", 500)
+            .attr("x", 550)
+            .attr("y", 500);
+		var bars = canvas1.selectAll("rect")
+					.data(dataArray)
+					.enter()
+						.append("rect")
+						.attr("width", function(d){return d*10;})
+						.attr("height", 50)
+						.attr("y", function(d, i){ return i*100 });
+    var bars = canvas2.selectAll("rect")
+					  .data(dataArray)
+					  .enter()
+						.append("rect")
+						.attr("width", function(d){return d*5;})
+						.attr("height", 50)
+						.attr("y", function(d, i){ return i*100 })
+            .attr("fill","green");
+    var bars = canvas3.selectAll("rect")
+					  .data(dataArray)
+					  .enter()
+						.append("rect")
+						.attr("width", function(d){return d*15;})
+						.attr("height", 50)
+						.attr("y", function(d, i){ return i*100 })
+            .attr("fill","orange");
+            
 </script>
-</body>
+
+</md-main>
 </html>
+
