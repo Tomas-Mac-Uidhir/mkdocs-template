@@ -56,7 +56,7 @@ const svg = d3.select("svg")
 	.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 // Load the data
-d3.csv("docs/assests/data/Ref-Emissions.csv").then(function(data) {
+d3.csv("https://raw.githubusercontent.com/Tomas-Mac-Uidhir/mkdocs-material-sitetest/c03f6ad702e8676c2f6717923891c711d666de05/docs/assets/data/Ref-Emissions.csv").then(function(data) {
     // Coerce the data to numbers.
     data.forEach(d => {
         d.Branch = parseDate(d.Branch);
