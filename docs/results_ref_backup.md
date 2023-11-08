@@ -15,7 +15,7 @@
         }
     </style>
 </head>
-<body>
+<md-content>
     <svg width="500" height="500"></svg>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script>
@@ -36,7 +36,7 @@ const area = d3.area()
 // Define the stack
 const stack = d3.stack();
 // Create a tooltip div that is hidden by default:
-const tooltip = d3.select("body").append("div")
+const tooltip = d3.select("md-content").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0)
     .style("position", "absolute")
@@ -102,5 +102,5 @@ d3.csv("docs/assests/data/Ref-Emissions.csv").then(function(data) {
     .text("MtCO2eq");	
 });
     </script>
-</body>
+</md-content>
 </html>
