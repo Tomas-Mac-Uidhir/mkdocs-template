@@ -23,23 +23,18 @@
 const margin = { top: 20, right: 20, bottom: 30, left: 50 },
       width = 500 - margin.left - margin.right,
       height = 300 - margin.top - margin.bottom;
-
 // Parse the date / time
 const parseDate = d3.timeParse("%Y");
-
 // Set the ranges
 const x = d3.scaleTime().range([0, width]);
 const y = d3.scaleLinear().range([height, 0]);
-
 // Define the area
 const area = d3.area()
     .x(d => x(d.data.Branch))
     .y0(d => y(d[0]))
     .y1(d => y(d[1]));
-
 // Define the stack
 const stack = d3.stack();
-
 // Create a tooltip div that is hidden by default:
 const tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -54,17 +49,14 @@ const tooltip = d3.select("body").append("div")
     .style("border", "0px")
     .style("border-radius", "8px")
     .style("pointer-events", "none");
-
 // Adds the svg canvas
 const svg = d3.select("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
 	.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-
 // Load the data
-d3.csv("Ref-Emissions.csv").then(function(data) {
-
+d3.csv("docs/assests/data/Ref-Emissions.csv").then(function(data) {
     // Coerce the data to numbers.
     data.forEach(d => {
         d.Branch = parseDate(d.Branch);
@@ -72,17 +64,11 @@ d3.csv("Ref-Emissions.csv").then(function(data) {
         d.Transformation = +d.Transformation;
         d.NonEnergy = +d.NonEnergy;
     });
-
     // Stack the data
     const series = stack.keys(["Demand", "Transformation", "NonEnergy"])(data);
-	
-		
-
-
-    // Scale the range of the data
+      // Scale the range of the data
     x.domain(d3.extent(data, d => d.Branch));
     y.domain([0, d3.max(series, d => d3.max(d, d => d[1]))]);
-
     // Add the stacked areas
     svg.selectAll(".area")
     .data(series)
@@ -103,26 +89,18 @@ d3.csv("Ref-Emissions.csv").then(function(data) {
             .duration(500)
             .style("opacity", 0);
     });
-		
-
     // Add the X Axis
     svg.append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).ticks(d3.timeYear));
-		
-		
-
     // Add the Y Axis
     svg.append("g")
         .call(d3.axisLeft(y))
 	svg.append("text")
     .attr("text-anchor", "middle")  // this makes it easy to center the text as the transform is applied
     .attr("transform", `translate(${-margin.left + 20},${height / 2})rotate(-90)`)  // text is drawn off the screen top left, move down and out and rotate
-    .text("MtCO2eq");
-		
+    .text("MtCO2eq");	
 });
-
-
     </script>
 </body>
 </html>
