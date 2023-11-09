@@ -1,19 +1,22 @@
+#Reference Scenario
+
+
+##All demand
+<p>Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+</p>
 <!DOCTYPE html>
 <meta charset="utf-8">
-##Reference
-<p> some placeholder text describing what is in the reference charts </p>
 <head>
-	<title>Responsive D3 Charts</title>
 	<script src="https://d3js.org/d3.v4.js"></script>
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	<style>
 		#chart-container {
 			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 			grid-gap: 10px;
 		}
 		.chart-wrapper {
-			// border: 1px solid #ccc;
+			border: 1px solid #ccc;
 			margin: 10px;
 		}
 		.chart {
@@ -27,35 +30,37 @@
 		}
 	</style>
 </head>
-<body>
+
+
+<md-main>
 <div id="chart-container">
 	<div class="chart-wrapper" id="chart1"></div>
 	<div class="chart-wrapper" id="chart2"></div>
-</div>
-
-<div>
-    <a href="https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered_wide.csv" target="_blank">
-        View Chart Data
-    </a>
+	<div class="chart-wrapper" id="chart3"></div>
+	<div class="chart-wrapper" id="chart4"></div>
+	<div class="chart-wrapper" id="chart5"></div>
+	<div class="chart-wrapper" id="chart6"></div>
 </div>
 
 <script>
+	// Your D3 code to create a chart, wrapped in a function
 	function createChart(chartId) {
-	    // ... Set the dimensions and margins of the graph
-	    var margin = {top: 80, right: 100, bottom: 80, left: 100},
-	        width = 460 - margin.left - margin.right,
-	        height = 400 - margin.top - margin.bottom;
-
-	    // ... append the svg object to the body of the page
-	    var svg = d3.select("#" + chartId)
-	      .append("svg")
-	        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
-	      .append("g")
-	        .attr("transform",
-	              "translate(" + margin.left + "," + margin.top + ")");
-	    
-	    // Parse the Data
-d3.csv("Ref-Emissions.csv", function(data) {
+		  // set the dimensions and margins of the graph
+var margin = {top: 60, right: 230, bottom: 50, left: 50},
+    width = 660 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+// append the svg object to the body of the page
+var svg = d3.select("#" + chartId)
+  .append("svg")
+    // Set the view box with the width and height to make it responsive
+    .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+    // Remove the fixed width and height if you want the SVG to be fully responsive
+    //.attr("width", width + margin.left + margin.right)
+    //.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+// Parse the Data
+d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered_wide.csv", function(data) {
   //////////
   // GENERAL //
   //////////
@@ -84,15 +89,14 @@ d3.csv("Ref-Emissions.csv", function(data) {
       .attr("text-anchor", "end")
       .attr("x", width-150)
       .attr("y", height+40 )
-      .text("Time (year)")
-	  .attr("text-anchor","middle");
+      .text("Time (year)");
   // Add Y axis label:
   svg.append("text")
       .attr("text-anchor", "end")
       .attr("x", 150)
       .attr("y", -20 )
       .text("# of baby born")
-      .attr("text-anchor", "middle")
+      .attr("text-anchor", "start")
   // Add Y axis
   var y = d3.scaleLinear()
     .domain([0, 200000])
@@ -201,20 +205,25 @@ d3.csv("Ref-Emissions.csv", function(data) {
         .on("mouseover", highlight)
         .on("mouseleave", noHighlight)
 })
-	
+		// Make sure to replace "#my_dataviz" with "#" + chartId
+		// Also, set the viewBox instead of width and height for responsiveness
 	}
 
 	// Call createChart for each chart you want to create
 	createChart('chart1');
 	createChart('chart2');
-	
+	createChart('chart3');
+	createChart('chart4');
+	createChart('chart5');
+	createChart('chart6');
 </script>
+## Residential Results
 
-</body>
+<p> 
+Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+</p>
 
-<other>
-##Sectoral Emissions Ceiling
-###Overview
-<p>some text</p>
-</other>
+
+</md-main>
 </html>
+
